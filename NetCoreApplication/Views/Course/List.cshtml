@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Course Details";
+}
+<p>
+    @Html.ActionLink("Add New", "Create", "Course")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Fees</th>
+        <th>Action</th>
+    </tr>
+    @foreach(NetCoreApplication.Models.Course cr in ViewBag.CourseList)
+    {
+        <tr>
+            <td>@cr.Id</td>
+            <td>@cr.Name</td>
+            <td>@cr.Fees</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { @id = cr.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { @id = cr.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+
