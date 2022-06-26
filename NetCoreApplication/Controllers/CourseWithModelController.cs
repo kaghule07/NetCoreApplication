@@ -1,39 +1,40 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreApplication.Models;
+
 namespace NetCoreApplication.Controllers
 {
-    public class EmployeeWithModelController : Controller
+    public class CourseWithModelController : Controller
     {
-        // GET: EmployeeWithModelController
-        EmployeeDAL db=new EmployeeDAL();   
+        CourseDAL db = new CourseDAL();
+        // GET: CourseWithModelController
         public ActionResult Index()
         {
-            var model = db.GetAllEmployee();
-            return View(model);
+            var cr = db.GetAllCourse();
+            return View(cr);
         }
 
-        // GET: EmployeeWithModelController/Details/5
+        // GET: CourseWithModelController/Details/5
         public ActionResult Details(int id)
         {
-            var employee = db.GetEmployeeById(id);
-            return View(employee);
+            var cr = db.GetCourseById(id);
+            return View(cr);
         }
 
-        // GET: EmployeeWithModelController/Create
+        // GET: CourseWithModelController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: EmployeeWithModelController/Create
+        // POST: CourseWithModelController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Employee emp)
+        public ActionResult Create(Course cr)
         {
             try
             {
-                db.Save(emp);
+                db.Save(cr);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -42,21 +43,21 @@ namespace NetCoreApplication.Controllers
             }
         }
 
-        // GET: EmployeeWithModelController/Edit/5
+        // GET: CourseWithModelController/Edit/5
         public ActionResult Edit(int id)
         {
-            Employee emp = db.GetEmployeeById(id);
-            return View();
+            Course cr = db.GetCourseById(id);
+            return View(cr);
         }
 
-        // POST: EmployeeWithModelController/Edit/5
+        // POST: CourseWithModelController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Employee emp)
+        public ActionResult Edit(Course cr)
         {
             try
             {
-                db.Update(emp);
+                db.Update(cr);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -65,14 +66,14 @@ namespace NetCoreApplication.Controllers
             }
         }
 
-        // GET: EmployeeWithModelController/Delete/5
+        // GET: CourseWithModelController/Delete/5
         public ActionResult Delete(int id)
         {
-            Employee emp = db.GetEmployeeById(id);
-            return View(emp);
+            Course cr = db.GetCourseById(id);
+            return View(cr);
         }
 
-        // POST: EmployeeWithModelController/Delete/5
+        // POST: CourseWithModelController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Delete")]
