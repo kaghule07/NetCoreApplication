@@ -46,7 +46,7 @@ namespace NetCoreApplication.Controllers
         public ActionResult Edit(int id)
         {
             Employee emp = db.GetEmployeeById(id);
-            return View();
+            return View(emp);
         }
 
         // POST: EmployeeWithModelController/Edit/5
